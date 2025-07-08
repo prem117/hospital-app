@@ -1,0 +1,18 @@
+spring:
+    datasource:
+        driverClassName: org.h2.Driver
+        password: password
+        url: jdbc:h2:mem:testdb
+        username: sa
+    h2:
+        console:
+            enabled: true
+            settings:
+               web-allow-others: true
+    jpa:
+        database-platform: org.hibernate.dialect.H2Dialect
+wifi:
+    identifier1: value1
+    identifier2: value2
+    identifier3: value3
+

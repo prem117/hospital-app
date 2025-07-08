@@ -8,12 +8,14 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+
 @Service
 public class HospitalService {
 
 
     @Autowired(required = true)
     private HospitalRepository hospitalRepository;
+
 
 
     public HospitalService(HospitalRepository hospitalRepository) {

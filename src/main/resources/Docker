@@ -1,0 +1,12 @@
+# Use OpenJDK base image
+FROM openjdk:17
+
+# Set working directory
+WORKDIR /app
+
+# Copy and compile the Java source
+COPY HelloWorld.java .
+RUN javac HelloWorld.java
+
+# Run the Java app
+CMD ["java", "HelloWorld"]

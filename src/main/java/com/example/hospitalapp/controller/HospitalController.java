@@ -2,26 +2,42 @@ package com.example.hospitalapp.controller;
 
 import com.example.hospitalapp.pojo.Hospital;
 import com.example.hospitalapp.service.HospitalService;
+import com.example.hospitalapp.service.WifiProperties;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
+@Configuration
 public class HospitalController {
 
-    public HospitalController() {
-    }
+    //@Autowired(required = true)
+    private  HospitalService hospitalService;
 
+
+    @Autowired
     public HospitalController(HospitalService hospitalService) {
-        this.hospitalService = hospitalService;
+        this.hospitalService=hospitalService;
     }
 
-    @Autowired(required = true)
-    private HospitalService hospitalService;
+    public void setHospitalService(HospitalService hospitalService){
+        this.hospitalService=hospitalService;
+    }
+
+    @Autowired
+    private WifiProperties wifiProperties;
+
+
+
+
 
 
     @GetMapping("/getOne/{id}")
@@ -60,6 +76,12 @@ public class HospitalController {
                     return new ResponseEntity<>(HttpStatus.ACCEPTED);
                 }
             return  new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
+    @GetMapping("/testwifi")
+    public  void testWifi(){
+        Map<String,String> days=wifiProperties.getDays();
+        System.out.println(days);
     }
 
 }
