@@ -83,5 +83,10 @@ public class HospitalController {
         Map<String,String> days=wifiProperties.getDays();
         System.out.println(days);
     }
+    @GetMapping("/healthCheck")
+    public  String testHealth(){
+        return "Welcome to the setup";
+    }
+
 
 }
